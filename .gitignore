@@ -1,0 +1,40 @@
+# WordPress & Core files (never store whole WP core in repo)
+/wp-admin/
+/wp-includes/
+/wp-*.php
+/xmlrpc.php
+/index.php
+/license.txt
+/readme.html
+
+# Environment & Credentials
+.env
+.env.*
+*.log
+*.sql
+*.tar.gz
+*.zip
+*.bak
+*.swp
+
+# OS / Editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Node / Build Tooling (if used)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+dist/
+build/
+
+# Backups & Temp files
+backups/
+dump*.sql
+scratch/
