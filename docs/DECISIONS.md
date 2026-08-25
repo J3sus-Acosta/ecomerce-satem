@@ -14,6 +14,9 @@ Este documento contiene las decisiones técnicas tomadas para el proyecto **E-Co
 | ADR-004 | 2026-08-24 | Configuración Geográfica Base | Curaçao (`America/Curacao`, USD `$`) | Ajustado a la ubicación de operaciones del cliente. |
 | ADR-005 | 2026-08-24 | Fase Picking / Barcode | Pospuesto para Fase 2 (Prevista arquitectura compatible con REST API) | Centrar la Fase 1 en la estabilización de la tienda B2C/B2B antes de añadir la capa logística avanzada. |
 | ADR-006 | 2026-08-24 | Lógica B2B de Clientes | Pausado desarrollo propio; el cliente revisará manualmente plugins existentes | Priorizar el uso de un plugin ya existente para evitar desarrollo desde cero innecesario. |
+| ADR-007 | 2026-08-24 | Configuración Fiscal / Impuestos | `PENDIENTE — DEFINICIÓN TRIBUTARIA DE CURAÇAO` | Sin tasa de impuesto configurada en WooCommerce hasta recibir confirmación oficial del cliente/contador. |
+| ADR-008 | 2026-08-24 | Pasarela de Pago | `PENDIENTE — PASARELA DE PAGO` | Sin gateways activos (Stripe, PayPal, CX Pay, etc.) hasta conocer el proveedor de pagos real del cliente. |
+| ADR-009 | 2026-08-24 | Zonas y Tarifas de Delivery | `PENDIENTE — TARIFAS Y ZONAS DE DELIVERY` | Estructura preparada sin crear zonas ni tarifas ficticias hasta contar con las reglas de envío finales. |
 
 ---
 

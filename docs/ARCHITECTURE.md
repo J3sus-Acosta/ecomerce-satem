@@ -20,8 +20,8 @@ El proyecto **E-Commerce SATEM** se basa en un ecosistema modular sobre **WordPr
 ## 2. COMPONENTES PRINCIPALES
 
 ### 2.1. Plataforma Base
-- **WordPress Core**: Versión estable 6.x+, configurada en idioma Español (`es_VE` o `es_ES`) y zona horaria `America/Curacao`.
-- **WooCommerce**: Motor principal de e-commerce (catálogo, carrito, checkout, órdenes, clientes, mails transaccionales).
+- **WordPress Core**: Versión estable 6.x+, configurada en idioma Español (`es_VE`), zona horaria `America/Curacao`.
+- **WooCommerce**: Instalado y activo (v11.0.1). Configurado para país Curaçao (`CW`) y moneda base `USD` (`$10.00`). Motor principal de e-commerce (catálogo, carrito, checkout, órdenes).
 
 ### 2.2. Código Personalizado (Desarrollo Propio)
 Todo código propio debe versionarse dentro del repositorio local `ecomerce-satem` y desplegarse mediante archivos sincronizados.

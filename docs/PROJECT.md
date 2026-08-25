@@ -69,8 +69,23 @@ En una segunda fase, la plataforma integrará una herramienta de picking para op
 
 ### 6.1. Entorno de Desarrollo (Actual)
 - **Plataforma**: WordPress en **EasyPanel** (Docker containerized WP).
+- **WooCommerce**: Instalado y activo (v11.0.1).
+- **Configuración Regional**: País Curaçao (`CW`), Moneda Dólar Estadounidense (`USD` - `$10.00`), Zona Horaria `America/Curacao`.
 - **URL**: `https://tienda.satemsoluciones.com`
-- **Conectividad**: MCP (`wordpress-mcp`) activo para tareas de auditoría e integración.
+- **Conectividad**: MCP (`wordpress-mcp` v0.2.5) activo para auditoría e integración.
+
+---
+
+## 7. ESTADO DE DEFINICIONES Y PENDIENTES (FASE 1)
+- [x] **WooCommerce**: Instalado y configurado en estado base.
+- [x] **Configuración Regional**: Curaçao, USD ($), America/Curacao.
+- [ ] **Impuestos**: Pendiente definición tributaria de Curaçao (OB %).
+- [ ] **Pagos**: Pasarela de pago pendiente de selección por parte del cliente.
+- [ ] **Delivery**: Tarifas y zonas pendientes de confirmación del cliente.
+- [ ] **B2B**: Pausado para evaluación manual de plugins por parte del usuario.
+- [ ] **Branding**: Diseño visual, paleta de colores y logo pendientes de definición.
+- [ ] **Picking / Barcode**: Pospuesto para Fase 2.
+
 
 ### 6.2. Entorno de Producción (Previsto)
 - **Hosting**: **Hostinger** (Plan Single).

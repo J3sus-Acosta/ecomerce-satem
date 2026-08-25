@@ -5,7 +5,8 @@ Repositorio de código personalizado, extensión y documentación para el proyec
 ## 📌 Resumen del Proyecto
 
 - **Cliente**: SATEM Soluciones (Curaçao)
-- **Plataforma**: WordPress + WooCommerce
+- **Plataforma**: WordPress 6.x + WooCommerce 11.0.1
+- **Configuración Base**: País Curaçao (`CW`), Moneda `USD` (`$10.00`), Timezone `America/Curacao`.
 - **Modelos de Negocio**:
   - **B2C**: Venta al por menor (clientes particulares, venta unitaria).
   - **B2B**: Venta al por mayor (Tokos, supermercados, restaurantes, ventas por caja/múltiplos, precios por grupo).
