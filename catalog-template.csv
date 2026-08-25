@@ -1,0 +1,2 @@
+SKU,Name,Short Description,Description,Regular Price,Stock,Categories,_satem_barcode_unit,_satem_barcode_box,_satem_units_per_box,_satem_sku_box,Brand,Weight,Length,Width,Height,Image URL,Tax Class,Status
+"EXAMPLE-001","Orange Juice 1L (EXAMPLE - DO NOT IMPORT)","1L pure orange juice container","Fresh 1L pure orange juice in paper carton.",2.50,1200,"Beverages","0759123456789","17591234567896",12,"BOX-BEB-001","SampleBrand",1.10,10,10,24,"https://example.com/sample-image.jpg","standard","publish"

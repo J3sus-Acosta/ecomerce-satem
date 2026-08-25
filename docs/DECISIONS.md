@@ -23,6 +23,7 @@ Este documento contiene las decisiones técnicas tomadas para el proyecto **E-Co
 | ADR-013 | 2026-08-24 | Auditoría Base WooCommerce | **Configuración Base para Curaçao Verificada** | CW / USD / America/Curacao confirmados. Impuestos, pasarelas de pago, zonas de delivery y grupos B2B quedan formalmente registrados como `[PENDIENTE — DEFINICIÓN DEL CLIENTE]` para evitar configuraciones arbitrarias. |
 | ADR-014 | 2026-08-24 | Frontend sin Page Builder | **Prohibición Total de Page Builders** | Prohibidos Elementor, Divi, Bricks, WPBakery, Oxygen, Breakdance y equivalentes. Desarrollo mediante `satem-child`, WooCommerce nativo, bloques y código propio para garantizar rendimiento, mantenibilidad y control. |
 | ADR-015 | 2026-08-24 | Idioma Principal de Interfaz | **ENGLISH (en_US)** | El idioma comercial oficial de la plataforma es inglés. Toda la interfaz (Shop, Cart, Checkout, My Account, avisos) se presenta en inglés. |
+| ADR-016 | 2026-08-24 | Modelo de Datos y Códigos de Barras | **Tratamiento de Barras como Cadena (String) e Inventario Unificado** | Los códigos de barras (`_satem_barcode_unit`, `_satem_barcode_box`) se almacenan estrictamente como texto (`string`) para preservar ceros a la izquierda (ej. `0759...`). El stock se mantiene en unidades únicas compartidas por B2C y B2B. |
 
 ---
 
