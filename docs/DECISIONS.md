@@ -17,6 +17,9 @@ Este documento contiene las decisiones técnicas tomadas para el proyecto **E-Co
 | ADR-007 | 2026-08-24 | Configuración Fiscal / Impuestos | `PENDIENTE — DEFINICIÓN TRIBUTARIA DE CURAÇAO` | Sin tasa de impuesto configurada en WooCommerce hasta recibir confirmación oficial del cliente/contador. |
 | ADR-008 | 2026-08-24 | Pasarela de Pago | `PENDIENTE — PASARELA DE PAGO` | Sin gateways activos (Stripe, PayPal, CX Pay, etc.) hasta conocer el proveedor de pagos real del cliente. |
 | ADR-009 | 2026-08-24 | Zonas y Tarifas de Delivery | `PENDIENTE — TARIFAS Y ZONAS DE DELIVERY` | Estructura preparada sin crear zonas ni tarifas ficticias hasta contar con las reglas de envío finales. |
+| ADR-010 | 2026-08-24 | Selección de Plugin B2B | Evaluación técnica de **B2BKing Core** | Instalado B2BKing Core v5.2.40. Evaluación completada: 100% compatible. **Sin compras de licencias de ningún tipo**. La implementación B2B se basará exclusivamente en módulos gratuitos o soluciones sin costo. |
+| ADR-011 | 2026-08-24 | Política de Licenciamiento Comercial | Proyecto para **único cliente / único sitio**. Las licencias comerciales serán contratadas/costeadas directamente por el cliente final. | SATEM no asume licencias como costo propio. Se desarrolla con versiones Free/Lite y se etiquetan funcionalidades como `[REQUERIMIENTO DE LICENCIA PRO]` cuando se requiera la versión Pro. |
+| ADR-012 | 2026-08-24 | Modelo de Catálogo (Unidad vs Caja) | **Opción A: Producto Único Simple con Metadatos de Empaque** | Inventario unificado. B2C compra por unidad; B2B compra por caja usando reglas de paso (Step 12) de B2BKing. Campos de empaque (`_satem_barcode_unit`, `_satem_barcode_box`, `_satem_units_per_box`) preparados para el picking futuro. |
 
 ---
 

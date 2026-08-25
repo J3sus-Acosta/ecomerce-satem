@@ -5,8 +5,67 @@ Description: Tema hijo personalizado para el e-commerce de SATEM Soluciones (Cur
 Author: SATEM Soluciones / Antigravity
 Author URI: https://tienda.satemsoluciones.com
 Template: twentytwentyfour
-Version: 1.0.0
+Version: 1.1.0
 Text Domain: satem-child
 */
 
-/* Custom styles for SATEM E-Commerce */
+:root {
+	/* Palette Tokens */
+	--satem-primary: #0F172A;
+	--satem-accent: #2563EB;
+	--satem-accent-hover: #1D4ED8;
+	--satem-bg-light: #F8FAFC;
+	--satem-surface: #FFFFFF;
+	--satem-text: #334155;
+	--satem-text-dark: #0F172A;
+	--satem-border: #E2E8F0;
+	
+	/* Layout & Radius */
+	--satem-radius-sm: 6px;
+	--satem-radius-md: 10px;
+	--satem-radius-lg: 16px;
+	--satem-shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+	--satem-shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* Base WooCommerce Overrides */
+.woocommerce ul.products li.product {
+	background: var(--satem-surface);
+	border: 1px solid var(--satem-border);
+	border-radius: var(--satem-radius-md);
+	padding: 16px;
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.woocommerce ul.products li.product:hover {
+	transform: translateY(-3px);
+	box-shadow: var(--satem-shadow-md);
+}
+
+.woocommerce a.button.add_to_cart_button,
+.woocommerce button.button.alt {
+	background-color: var(--satem-accent) !important;
+	color: #ffffff !important;
+	border-radius: var(--satem-radius-sm) !important;
+	font-weight: 600;
+	padding: 10px 20px;
+	transition: background-color 0.2s ease;
+}
+
+.woocommerce a.button.add_to_cart_button:hover,
+.woocommerce button.button.alt:hover {
+	background-color: var(--satem-accent-hover) !important;
+}
+
+/* SATEM Custom Badge Styles */
+.satem-b2b-badge {
+	display: inline-block;
+	background: #EFF6FF;
+	color: #1D4ED8;
+	font-size: 0.75rem;
+	font-weight: 700;
+	padding: 3px 8px;
+	border-radius: 4px;
+	text-transform: uppercase;
+	margin-bottom: 8px;
+}

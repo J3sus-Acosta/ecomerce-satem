@@ -76,16 +76,33 @@ En una segunda fase, la plataforma integrará una herramienta de picking para op
 
 ---
 
-## 7. ESTADO DE DEFINICIONES Y PENDIENTES (FASE 1)
-- [x] **WooCommerce**: Instalado y configurado en estado base.
+## 7. ESTADO DE DEFINICIONES Y PENDIENTES (FASE 2 - EVALUACIÓN B2B)
+- [x] **WooCommerce**: Instalado y configurado en estado base (v11.0.1).
 - [x] **Configuración Regional**: Curaçao, USD ($), America/Curacao.
+- [x] **Evaluación B2B**: B2BKing Core v5.2.40 instalado y evaluado. Se recomienda actualizar a B2BKing Premium para habilitar grupos ilimitados, reglas de caja/step y precios por rol.
 - [ ] **Impuestos**: Pendiente definición tributaria de Curaçao (OB %).
 - [ ] **Pagos**: Pasarela de pago pendiente de selección por parte del cliente.
 - [ ] **Delivery**: Tarifas y zonas pendientes de confirmación del cliente.
-- [ ] **B2B**: Pausado para evaluación manual de plugins por parte del usuario.
 - [ ] **Branding**: Diseño visual, paleta de colores y logo pendientes de definición.
-- [ ] **Picking / Barcode**: Pospuesto para Fase 2.
+- [ ] **Picking / Barcode**: Pospuesto para Fase 2 logística.
 
+
+---
+
+## 8. MODELO DE LICENCIAMIENTO DEL PROYECTO
+- **Alcance**: Proyecto desarrollado exclusivamente para un **único cliente y un único sitio web**.
+- **Propiedad de Licencias**: Las licencias comerciales de software de terceros serán propiedad del cliente final y/o contratadas directamente por este.
+- **Costos de Terceros**: SATEM no asumirá las licencias de terceros como costos operativos propios.
+- **Estructura Comercial**: SATEM cobrará separadamente al cliente por:
+  1. Honorarios de implementación y desarrollo.
+  2. Costo estimado de licencias necesarias para el primer año (desglosado independientemente).
+  3. Servicios opcionales de soporte y mantenimiento.
+- **Política durante el Desarrollo**:
+  - El desarrollo se realiza utilizando **B2BKing Free/Lite**.
+  - Si una funcionalidad requerida pertenece a la versión Pro, se documentará formalmente como **`REQUERIMIENTO DE LICENCIA PRO`**.
+  - **REGLA ABSOLUTA**: No se realizarán compras automáticas, no se introducirán datos financieros ni se evadirán los mecanismos de licencia.
+
+---
 
 ### 6.2. Entorno de Producción (Previsto)
 - **Hosting**: **Hostinger** (Plan Single).
