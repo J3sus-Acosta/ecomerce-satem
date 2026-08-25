@@ -1,40 +1,232 @@
 /*
 Theme Name: SATEM Child Theme
 Theme URI: https://tienda.satemsoluciones.com
-Description: Tema hijo personalizado para el e-commerce de SATEM Soluciones (Curaçao).
+Description: Clean, high-performance child theme for SATEM Soluciones E-Commerce (Curaçao). Built without Page Builders.
 Author: SATEM Soluciones / Antigravity
 Author URI: https://tienda.satemsoluciones.com
 Template: twentytwentyfour
-Version: 1.1.0
+Version: 1.2.0
 Text Domain: satem-child
 */
 
+/* -------------------------------------------------------------------------
+   1. SYSTEM DESIGN TOKENS (PROVISIONAL BRANDING & VARIABLES)
+   ------------------------------------------------------------------------- */
 :root {
-	/* Palette Tokens */
+	/* Color Palette */
 	--satem-primary: #0F172A;
+	--satem-primary-hover: #1E293B;
 	--satem-accent: #2563EB;
 	--satem-accent-hover: #1D4ED8;
-	--satem-bg-light: #F8FAFC;
-	--satem-surface: #FFFFFF;
-	--satem-text: #334155;
-	--satem-text-dark: #0F172A;
+	--satem-bg-main: #F8FAFC;
+	--satem-bg-card: #FFFFFF;
 	--satem-border: #E2E8F0;
-	
-	/* Layout & Radius */
+	--satem-text-main: #334155;
+	--satem-text-heading: #0F172A;
+	--satem-text-muted: #64748B;
+	--satem-success: #16A34A;
+	--satem-badge-bg: #EFF6FF;
+	--satem-badge-color: #1D4ED8;
+
+	/* Layout & Spacing */
+	--satem-container-max: 1240px;
 	--satem-radius-sm: 6px;
 	--satem-radius-md: 10px;
 	--satem-radius-lg: 16px;
-	--satem-shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
-	--satem-shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+	--satem-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+	--satem-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+	/* Typography */
+	--satem-font-base: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
 }
 
-/* Base WooCommerce Overrides */
+/* -------------------------------------------------------------------------
+   2. GLOBAL LAYOUT & ACCESSIBILITY
+   ------------------------------------------------------------------------- */
+body {
+	font-family: var(--satem-font-base);
+	background-color: var(--satem-bg-main);
+	color: var(--satem-text-main);
+	margin: 0;
+	padding: 0;
+	line-height: 1.6;
+	-webkit-font-smoothing: antialiased;
+}
+
+a {
+	color: var(--satem-accent);
+	text-decoration: none;
+	transition: color 0.2s ease;
+}
+
+a:hover, a:focus {
+	color: var(--satem-accent-hover);
+	text-decoration: underline;
+}
+
+:focus-visible {
+	outline: 2px solid var(--satem-accent);
+	outline-offset: 2px;
+}
+
+.satem-container {
+	max-width: var(--satem-container-max);
+	margin: 0 auto;
+	padding: 0 20px;
+}
+
+/* -------------------------------------------------------------------------
+   3. HEADER & NAVIGATION (MOBILE-FIRST)
+   ------------------------------------------------------------------------- */
+.satem-site-header {
+	background: var(--satem-bg-card);
+	border-bottom: 1px solid var(--satem-border);
+	position: sticky;
+	top: 0;
+	z-index: 100;
+	box-shadow: var(--satem-shadow-sm);
+}
+
+.satem-header-wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 14px 0;
+	gap: 16px;
+	flex-wrap: wrap;
+}
+
+.satem-logo-area a {
+	font-size: 1.35rem;
+	font-weight: 800;
+	color: var(--satem-text-heading);
+	letter-spacing: -0.5px;
+}
+
+.satem-logo-area a:hover {
+	text-decoration: none;
+}
+
+.satem-nav-main {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+}
+
+.satem-nav-main a {
+	color: var(--satem-text-main);
+	font-weight: 500;
+	font-size: 0.95rem;
+}
+
+.satem-nav-main a:hover {
+	color: var(--satem-accent);
+}
+
+.satem-header-actions {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+}
+
+.satem-cart-link {
+	position: relative;
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	background: var(--satem-bg-main);
+	padding: 8px 14px;
+	border-radius: var(--satem-radius-sm);
+	border: 1px solid var(--satem-border);
+	font-weight: 600;
+	font-size: 0.9rem;
+	color: var(--satem-text-heading);
+}
+
+.satem-cart-count {
+	background: var(--satem-accent);
+	color: #ffffff;
+	border-radius: 50%;
+	padding: 2px 7px;
+	font-size: 0.75rem;
+	font-weight: 700;
+}
+
+/* -------------------------------------------------------------------------
+   4. FOOTER STRUCTURE
+   ------------------------------------------------------------------------- */
+.satem-site-footer {
+	background: var(--satem-primary);
+	color: #94A3B8;
+	padding: 48px 0 24px;
+	margin-top: 64px;
+}
+
+.satem-footer-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	gap: 32px;
+	margin-bottom: 40px;
+}
+
+.satem-footer-col h4 {
+	color: #F8FAFC;
+	margin-top: 0;
+	margin-bottom: 16px;
+	font-size: 1.05rem;
+}
+
+.satem-footer-col ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.satem-footer-col ul li {
+	margin-bottom: 10px;
+}
+
+.satem-footer-col ul li a {
+	color: #94A3B8;
+	font-size: 0.9rem;
+}
+
+.satem-footer-col ul li a:hover {
+	color: #FFFFFF;
+}
+
+.satem-footer-bottom {
+	border-top: 1px solid #1E293B;
+	padding-top: 24px;
+	text-align: center;
+	font-size: 0.85rem;
+	color: #64748B;
+}
+
+/* -------------------------------------------------------------------------
+   5. WOOCOMMERCE STOREFRONT & CARDS
+   ------------------------------------------------------------------------- */
+.woocommerce ul.products {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+	gap: 24px;
+	padding: 0;
+	margin: 24px 0;
+	list-style: none;
+}
+
 .woocommerce ul.products li.product {
-	background: var(--satem-surface);
+	background: var(--satem-bg-card);
 	border: 1px solid var(--satem-border);
 	border-radius: var(--satem-radius-md);
-	padding: 16px;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 	transition: transform 0.2s ease, box-shadow 0.2s ease;
+	box-shadow: var(--satem-shadow-sm);
+	margin: 0 !important;
+	width: auto !important;
 }
 
 .woocommerce ul.products li.product:hover {
@@ -42,30 +234,88 @@ Text Domain: satem-child
 	box-shadow: var(--satem-shadow-md);
 }
 
+.woocommerce ul.products li.product .woocommerce-loop-product__title {
+	font-size: 1.05rem;
+	font-weight: 700;
+	color: var(--satem-text-heading);
+	margin: 12px 0 8px;
+}
+
+.woocommerce ul.products li.product .price {
+	font-size: 1.15rem;
+	font-weight: 700;
+	color: var(--satem-accent);
+	margin-bottom: 14px;
+}
+
 .woocommerce a.button.add_to_cart_button,
-.woocommerce button.button.alt {
+.woocommerce button.button.alt,
+.woocommerce input.button.alt {
 	background-color: var(--satem-accent) !important;
 	color: #ffffff !important;
 	border-radius: var(--satem-radius-sm) !important;
-	font-weight: 600;
-	padding: 10px 20px;
-	transition: background-color 0.2s ease;
+	font-weight: 600 !important;
+	padding: 10px 18px !important;
+	border: none !important;
+	cursor: pointer;
+	text-align: center;
+	display: inline-block;
+	transition: background-color 0.2s ease !important;
 }
 
 .woocommerce a.button.add_to_cart_button:hover,
-.woocommerce button.button.alt:hover {
+.woocommerce button.button.alt:hover,
+.woocommerce input.button.alt:hover {
 	background-color: var(--satem-accent-hover) !important;
 }
 
-/* SATEM Custom Badge Styles */
+/* -------------------------------------------------------------------------
+   6. CART, CHECKOUT & MY ACCOUNT WRAPPERS
+   ------------------------------------------------------------------------- */
+.woocommerce-cart-form,
+.wc-block-cart,
+.wc-block-checkout,
+.woocommerce-account {
+	background: var(--satem-bg-card);
+	border: 1px solid var(--satem-border);
+	border-radius: var(--satem-radius-md);
+	padding: 24px;
+	box-shadow: var(--satem-shadow-sm);
+	margin-top: 24px;
+	margin-bottom: 32px;
+}
+
+/* Badge for future B2B tags */
 .satem-b2b-badge {
 	display: inline-block;
-	background: #EFF6FF;
-	color: #1D4ED8;
+	background: var(--satem-badge-bg);
+	color: var(--satem-badge-color);
 	font-size: 0.75rem;
 	font-weight: 700;
 	padding: 3px 8px;
 	border-radius: 4px;
 	text-transform: uppercase;
 	margin-bottom: 8px;
+}
+
+/* -------------------------------------------------------------------------
+   7. RESPONSIVE BREAKPOINTS (MOBILE FIRST)
+   ------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+	.satem-header-wrapper {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.satem-nav-main {
+		width: 100%;
+		justify-content: space-between;
+		padding: 8px 0;
+		border-top: 1px solid var(--satem-border);
+	}
+
+	.woocommerce ul.products {
+		grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+		gap: 16px;
+	}
 }

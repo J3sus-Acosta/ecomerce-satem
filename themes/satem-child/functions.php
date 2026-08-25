@@ -22,3 +22,16 @@ function satem_child_enqueue_styles() {
 	);
 }
 add_action( 'wp_enqueue_scripts', 'satem_child_enqueue_styles' );
+
+/**
+ * Add custom body class for SATEM storefront layout.
+ *
+ * @param array $classes Existing body classes.
+ * @return array Modified body classes.
+ */
+function satem_child_body_classes( $classes ) {
+	$classes[] = 'satem-storefront-active';
+	$classes[] = 'satem-no-page-builder';
+	return $classes;
+}
+add_filter( 'body_class', 'satem_child_body_classes' );

@@ -9,7 +9,7 @@ El proyecto **E-Commerce SATEM** se basa en un ecosistema modular sobre **WordPr
         │
         ▼
 [ WordPress Core 6.x + WooCommerce ]
-  ├── [ Child Theme (`satem-child`) ] ──> Estilos personalizados, plantillas PHP adaptadas, UI/UX.
+  ├── [ Child Theme (`satem-child`) ] ──> Estilos nativos (CSS/JS), templates PHP adaptados, UI/UX.
   ├── [ Plugin B2B (`B2BKing`) ] ──> Gestión de grupos B2B, precios, cajas, MOQ y registro comercial.
   ├── [ Plugin Propio (`satem-core`) ] ──> Meta fields de empaque/barcode y endpoints de picking.
   └── [ WP REST API / MCP ] ──> Integración con IA Antigravity y herramientas externas.
@@ -20,29 +20,45 @@ El proyecto **E-Commerce SATEM** se basa en un ecosistema modular sobre **WordPr
 ## 2. COMPONENTES PRINCIPALES
 
 ### 2.1. Plataforma Base
-- **WordPress Core**: Versión estable 6.x+, configurada en idioma Español (`es_VE`), zona horaria `America/Curacao`.
+- **WordPress Core**: Versión estable 6.x+, configurada en idioma principal **Inglés (`en_US`)**, zona horaria `America/Curacao`.
 - **WooCommerce**: Instalado y activo (v11.0.1). Configurado para país Curaçao (`CW`) y moneda base `USD` (`$10.00`). Motor principal de e-commerce (catálogo, carrito, checkout, órdenes).
 - **B2BKing Core**: Instalado y activo (v5.2.40). Evaluación técnica completada.
 
 ### 2.2. Código Personalizado (Desarrollo Propio)
 Todo código propio debe versionarse dentro del repositorio local `ecomerce-satem` y desplegarse mediante archivos sincronizados.
 - **Plugin Principal (`plugins/satem-core`)**:
-  - Esqueleto limpio configurado con compatibilidad HPOS. En la fase correspondiente, registrará meta fields nativos de empaque (`_satem_barcode_unit`, `_satem_barcode_box`, `_satem_units_per_box`) y proporcionará endpoints REST API para el sistema de picking.
+  - Esqueleto limpio configurado con compatibilidad HPOS. Registra meta fields nativos de empaque (`_satem_barcode_unit`, `_satem_barcode_box`, `_satem_units_per_box`) y proporciona endpoints REST API para el sistema de picking.
 - **Tema Hijo (`themes/satem-child`)**:
-  - Tema hijo basado en Twenty Twenty-Four. Contiene sobrerescrituras visuales sin lógica B2B acoplada.
+  - Tema hijo basado en Twenty Twenty-Four. Contiene la maquetación nativa, CSS variables del sistema de diseño y scripts responsivos sin acoplamiento a Page Builders.
 
 ---
 
-## 3. B2B ARCHITECTURE (WOOCOMMERCE + B2BKING)
+## 3. REGLAS ARQUITECTÓNICAS DEL FRONTEND
+
+### 3.1. Prohibición Total de Page Builders (ADR-014)
+Queda estrictamente prohibida la instalación, activación o incorporación de constructores visuales de páginas (Page Builders), tales como:
+- Elementor / Elementor Pro
+- Divi / Beaver Builder / Bricks / WPBakery / Visual Composer / Oxygen / Breakdance
+- Frameworks de bloques pesados (Kadence, Spectra, Ultimate Addons)
+
+**Razón**: Garantizar el máximo rendimiento web, portabilidad, independencia técnica, código limpio versionable en Git y compatibilidad fluida con WooCommerce Blocks, HPOS, B2BKing y el sistema de picking.
+
+### 3.2. Idioma Principal de Interfaz (ADR-015)
+- El idioma oficial comercial del storefront es **English (`en_US`)**.
+- Todas las etiquetas de interfaz (Shop, Cart, Checkout, My Account, navegación, botones, formularios, alertas y avisos del sistema) se presentan en inglés.
+
+---
+
+## 4. B2B ARCHITECTURE (WOOCOMMERCE + B2BKING)
 
 El modelo de e-commerce híbrido para SATEM Soluciones operará bajo las siguientes reglas arquitectónicas:
 
-### 3.1. Clientes B2C (Particulares)
+### 4.1. Clientes B2C (Particulares)
 - **Acceso**: Público general (sin registro previo obligatorio o con checkout invitado).
 - **Unidades**: Venta unitaria de productos.
 - **Precios**: Precios regulares de lista (PVP).
 
-### 3.2. Clientes B2B (Mayoristas: Tokos, Restaurantes, Supermercados)
+### 4.2. Clientes B2B (Mayoristas: Tokos, Restaurantes, Supermercados)
 - **Estructura de Grupos B2B**:
   - `Toko`: Descuento/precio base mayorista para minimarkets `[REQUERIMIENTO DE LICENCIA PRO]`.
   - `Restaurante`: Precios para el canal HORECA `[REQUERIMIENTO DE LICENCIA PRO]`.
@@ -60,11 +76,11 @@ El modelo de e-commerce híbrido para SATEM Soluciones operará bajo las siguien
 
 ---
 
-## 4. DISEÑO DEL MODELO DE CATÁLOGO (UNIDAD VS CAJA)
+## 5. DISEÑO DEL MODELO DE CATÁLOGO (UNIDAD VS CAJA)
 
 Se adopta la **Opción A (Producto Único Simple con Metadatos de Empaque)** como arquitectura oficial para el catálogo.
 
-### 4.1. Mapeo de Campos de Producto
+### 5.1. Mapeo de Campos de Producto
 
 | Dato del Producto | Almacenamiento Técnico | Responsable | Uso |
 |---|---|---|---|
@@ -83,7 +99,7 @@ Se adopta la **Opción A (Producto Único Simple con Metadatos de Empaque)** com
 
 ---
 
-## 5. INTEGRACIÓN CON ANTIGRAVITY Y MCP
+## 6. INTEGRACIÓN CON ANTIGRAVITY Y MCP
 - **MCP (Model Context Protocol)**:
   - El plugin `wordpress-mcp` (v0.2.5) permanece activo en el entorno de WordPress para permitir la inspección, lectura de estado, verificación de endpoints y asistencia por IA en tiempo real.
 - **Control de Código**:
@@ -91,9 +107,9 @@ Se adopta la **Opción A (Producto Único Simple con Metadatos de Empaque)** com
 
 ---
 
-## 6. ESTRATEGIA DE ENTORNOS Y MIGRACIÓN
+## 7. ESTRATEGIA DE ENTORNOS Y MIGRACIÓN
 
-### 6.1. Flujo de Trabajo (Dev → Prod)
+### 7.1. Flujo de Trabajo (Dev → Prod)
 
 ```text
 [ Entorno Local / Antigravity ]
