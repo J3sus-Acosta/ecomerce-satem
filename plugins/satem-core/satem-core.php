@@ -2,8 +2,8 @@
 /**
  * Plugin Name: SATEM Core Engine
  * Plugin URI: https://tienda.satemsoluciones.com
- * Description: Plugin de lógica de negocio propia y metadatos de empaque/picking para E-Commerce SATEM (Curaçao).
- * Version: 1.1.0
+ * Description: Plugin de lógica de negocio propia, metadatos de empaque y motor B2B para E-Commerce SATEM (Curaçao).
+ * Version: 1.5.0
  * Author: SATEM Soluciones / Antigravity
  * Text Domain: satem-core
  * Requires PHP: 8.0
@@ -17,12 +17,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-define( 'SATEM_CORE_VERSION', '1.1.0' );
+define( 'SATEM_CORE_VERSION', '1.5.0' );
+define( 'SATEM_CORE_FILE', __FILE__ );
 define( 'SATEM_CORE_PATH', plugin_dir_path( __FILE__ ) );
 define( 'SATEM_CORE_URL', plugin_dir_url( __FILE__ ) );
 
 /**
- * Main Satem_Core Class.
+ * Main Satem_Core Bootstrap Class.
  */
 final class Satem_Core {
 
@@ -49,171 +50,63 @@ final class Satem_Core {
 	 * Constructor.
 	 */
 	private function __construct() {
-		$this->init_hooks();
+		add_action( 'plugins_loaded', array( $this, 'init_plugin' ) );
 	}
 
 	/**
-	 * Initialize hooks.
+	 * Initialize modules if WooCommerce is active.
 	 */
-	private function init_hooks() {
-		add_action( 'plugins_loaded', array( $this, 'on_plugins_loaded' ) );
-		add_action( 'init', array( $this, 'register_product_meta_fields' ) );
-
-		// WooCommerce Product Metabox hooks (Admin).
-		add_action( 'woocommerce_product_options_inventory_product_data', array( $this, 'add_packaging_product_fields' ) );
-		add_action( 'woocommerce_process_product_meta', array( $this, 'save_packaging_product_fields' ) );
-
-		// WooCommerce REST API output hook.
-		add_filter( 'woocommerce_rest_prepare_product_object', array( $this, 'expose_packaging_meta_in_rest' ), 10, 3 );
-	}
-
-	/**
-	 * Actions on plugins loaded.
-	 */
-	public function on_plugins_loaded() {
-		// Declare HPOS compatibility for WooCommerce.
-		add_action( 'before_woocommerce_init', array( $this, 'declare_hpos_compatibility' ) );
-	}
-
-	/**
-	 * Declare High-Performance Order Storage (HPOS) compatibility.
-	 */
-	public function declare_hpos_compatibility() {
-		if ( class_exists( \Automattic\WooCommerce\Utilities\FeaturesUtil::class ) ) {
-			\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true );
+	public function init_plugin() {
+		// Verify WooCommerce dependency.
+		if ( ! class_exists( 'WooCommerce' ) ) {
+			add_action( 'admin_notices', array( $this, 'woocommerce_missing_notice' ) );
+			return;
 		}
+
+		$this->includes();
+		$this->init_modules();
 	}
 
 	/**
-	 * Register product custom meta fields in WordPress meta API.
+	 * Include modular component files.
 	 */
-	public function register_product_meta_fields() {
-		$meta_keys = array(
-			'_satem_barcode_unit' => 'string',
-			'_satem_barcode_box'  => 'string',
-			'_satem_units_per_box' => 'integer',
-			'_satem_sku_box'      => 'string',
-		);
-
-		foreach ( $meta_keys as $meta_key => $type ) {
-			register_post_meta(
-				'product',
-				$meta_key,
-				array(
-					'show_in_rest' => true,
-					'single'       => true,
-					'type'         => $type,
-					'auth_callback' => function() {
-						return current_user_can( 'edit_posts' );
-					},
-				)
-			);
-		}
+	private function includes() {
+		require_once SATEM_CORE_PATH . 'includes/class-satem-hpos.php';
+		require_once SATEM_CORE_PATH . 'includes/class-satem-packaging.php';
+		require_once SATEM_CORE_PATH . 'includes/class-satem-b2b-roles.php';
+		require_once SATEM_CORE_PATH . 'includes/class-satem-b2b-registration.php';
+		require_once SATEM_CORE_PATH . 'includes/class-satem-b2b-admin.php';
+		require_once SATEM_CORE_PATH . 'includes/class-satem-b2b-pricing.php';
+		require_once SATEM_CORE_PATH . 'includes/class-satem-b2b-cart.php';
 	}
 
 	/**
-	 * Add custom packaging fields to WooCommerce product inventory panel in admin.
+	 * Instantiate active modules.
 	 */
-	public function add_packaging_product_fields() {
-		echo '<div class="options_group satem_packaging_options">';
-		echo '<h4 style="margin-left:12px; margin-top:10px;">' . esc_html__( 'Empaque y Código de Barras (SATEM)', 'satem-core' ) . '</h4>';
-
-		woocommerce_wp_text_input(
-			array(
-				'id'          => '_satem_barcode_unit',
-				'label'       => __( 'Código de Barras Unitario', 'satem-core' ),
-				'placeholder' => 'ej. 7591234567890',
-				'desc_tip'    => 'true',
-				'description' => __( 'Código EAN-13 / UPC impreso en la unidad individual.', 'satem-core' ),
-			)
-		);
-
-		woocommerce_wp_text_input(
-			array(
-				'id'          => '_satem_barcode_box',
-				'label'       => __( 'Código de Barras de Caja', 'satem-core' ),
-				'placeholder' => 'ej. 17591234567897',
-				'desc_tip'    => 'true',
-				'description' => __( 'Código EAN-14 / ITF-14 impreso en la caja máster.', 'satem-core' ),
-			)
-		);
-
-		woocommerce_wp_text_input(
-			array(
-				'id'          => '_satem_units_per_box',
-				'label'       => __( 'Unidades por Caja', 'satem-core' ),
-				'placeholder' => '12',
-				'type'        => 'number',
-				'custom_attributes' => array(
-					'step' => '1',
-					'min'  => '1',
-				),
-				'desc_tip'    => 'true',
-				'description' => __( 'Cantidad de unidades contenidas en una caja máster.', 'satem-core' ),
-			)
-		);
-
-		woocommerce_wp_text_input(
-			array(
-				'id'          => '_satem_sku_box',
-				'label'       => __( 'SKU de Caja (Opcional)', 'satem-core' ),
-				'placeholder' => 'ej. BOX-BEB-001',
-				'desc_tip'    => 'true',
-				'description' => __( 'SKU o código de empaque asignado por el fabricante.', 'satem-core' ),
-			)
-		);
-
-		echo '</div>';
+	private function init_modules() {
+		Satem_HPOS::get_instance();
+		Satem_Packaging::get_instance();
+		Satem_B2B_Roles::get_instance();
+		Satem_B2B_Registration::get_instance();
+		Satem_B2B_Admin::get_instance();
+		Satem_B2B_Pricing::get_instance();
+		Satem_B2B_Cart::get_instance();
 	}
 
 	/**
-	 * Save packaging fields when product is saved in admin.
-	 *
-	 * @param int $post_id Product Post ID.
+	 * Admin notice if WooCommerce is missing.
 	 */
-	public function save_packaging_product_fields( $post_id ) {
-		$fields = array(
-			'_satem_barcode_unit' => 'sanitize_text_field',
-			'_satem_barcode_box'  => 'sanitize_text_field',
-			'_satem_units_per_box' => 'absint',
-			'_satem_sku_box'      => 'sanitize_text_field',
-		);
-
-		foreach ( $fields as $field_key => $sanitize_func ) {
-			if ( isset( $_POST[ $field_key ] ) ) {
-				$val = call_user_func( $sanitize_func, wp_unslash( $_POST[ $field_key ] ) );
-				update_post_meta( $post_id, $field_key, $val );
-			}
-		}
-	}
-
-	/**
-	 * Expose packaging meta in WooCommerce REST API product responses.
-	 *
-	 * @param WP_REST_Response $response Response object.
-	 * @param WC_Data          $object   WC Product object.
-	 * @param WP_REST_Request  $request  Request object.
-	 * @return WP_REST_Response
-	 */
-	public function expose_packaging_meta_in_rest( $response, $object, $request ) {
-		$data = $response->get_data();
-
-		$data['satem_packaging'] = array(
-			'barcode_unit'  => get_post_meta( $object->get_id(), '_satem_barcode_unit', true ),
-			'barcode_box'   => get_post_meta( $object->get_id(), '_satem_barcode_box', true ),
-			'units_per_box' => (int) get_post_meta( $object->get_id(), '_satem_units_per_box', true ),
-			'sku_box'       => get_post_meta( $object->get_id(), '_satem_sku_box', true ),
-		);
-
-		$response->set_data( $data );
-		return $response;
+	public function woocommerce_missing_notice() {
+		echo '<div class="error"><p>';
+		echo esc_html__( 'SATEM Core Engine requiere que WooCommerce esté instalado y activo.', 'satem-core' );
+		echo '</p></div>';
 	}
 }
 
 /**
- * Initialize SATEM Core.
+ * Initialize SATEM Core Engine.
  */
-function satem_core_init() {
+function satem_core() {
 	return Satem_Core::get_instance();
 }
-satem_core_init();
+satem_core();
