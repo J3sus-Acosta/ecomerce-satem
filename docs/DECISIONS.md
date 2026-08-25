@@ -13,6 +13,7 @@ Este documento contiene las decisiones técnicas tomadas para el proyecto **E-Co
 | ADR-003 | 2026-08-24 | Extensión B2B | Lógica mediante Plugin de Negocio Propio + Plugin B2B especializado de terceros | Mantener el código modular, fácil de versionar e independiente de temas visuales. |
 | ADR-004 | 2026-08-24 | Configuración Geográfica Base | Curaçao (`America/Curacao`, USD `$`) | Ajustado a la ubicación de operaciones del cliente. |
 | ADR-005 | 2026-08-24 | Fase Picking / Barcode | Pospuesto para Fase 2 (Prevista arquitectura compatible con REST API) | Centrar la Fase 1 en la estabilización de la tienda B2C/B2B antes de añadir la capa logística avanzada. |
+| ADR-006 | 2026-08-24 | Lógica B2B de Clientes | Pausado desarrollo propio; el cliente revisará manualmente plugins existentes | Priorizar el uso de un plugin ya existente para evitar desarrollo desde cero innecesario. |
 
 ---
 
