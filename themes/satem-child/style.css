@@ -1,47 +1,50 @@
 /*
 Theme Name: SATEM Child Theme
 Theme URI: https://tienda.satemsoluciones.com
-Description: Clean, high-performance, theme-driven reusable child theme for SATEM Soluciones E-Commerce (Curaçao). Built without Page Builders.
+Description: Clean, high-performance, theme-driven child theme for SATEM Soluciones E-Commerce (Curaçao). Featuring official SATEM Dark Tech & Electric Teal branding.
 Author: SATEM Soluciones / Antigravity
 Author URI: https://tienda.satemsoluciones.com
 Template: twentytwentyfour
-Version: 1.5.0
+Version: 1.6.0
 Text Domain: satem-child
 */
 
 /* ==========================================================================
-   1. CENTRALIZED SYSTEM DESIGN TOKENS (PROVISIONAL BRANDING & VARIABLES)
+   1. CENTRALIZED SYSTEM DESIGN TOKENS (OFFICIAL SATEM DARK TECH PALETTE)
    ========================================================================== */
 :root {
-	/* Primary Brand Identity Tokens (SATEM Corporate Identity) */
-	--satem-primary: #0F172A;          /* Deep Slate Dark */
-	--satem-primary-dark: #020617;     /* Header & Footer Deepest Background */
-	--satem-secondary: #1E293B;        /* Secondary Dark Surface */
-	--satem-accent: #2563EB;           /* Tech Blue Accent / Primary Action */
-	--satem-accent-hover: #1D4ED8;     /* Hover Accent Blue */
-	--satem-accent-gradient: linear-gradient(135deg, #2563EB 0%, #06B6D4 100%);
+	/* SATEM Official Dark-Tech Brand Identity Tokens */
+	--satem-primary: #032530;          /* Deep Ocean Teal Main */
+	--satem-primary-dark: #02181F;     /* Deepest Midnight Teal (Header & Footer) */
+	--satem-secondary: #1C1917;        /* Charcoal Black Alternate Surface */
+	--satem-accent: #00D2B4;           /* Electric Teal Cyan Accent / Primary Action */
+	--satem-accent-hover: #00B59C;     /* Hover Electric Teal */
+	--satem-accent-gradient: linear-gradient(135deg, #00D2B4 0%, #008891 100%);
+	--satem-hero-gradient: linear-gradient(180deg, #02181F 0%, #062E3B 100%);
 
-	/* Backgrounds & Surfaces */
-	--satem-bg-main: #F8FAFC;          /* Light Slate Body Background */
-	--satem-surface: #FFFFFF;          /* Pure White Card & Container Surface */
-	--satem-surface-subtle: #F1F5F9;   /* Subtle Surface Highlight */
-	--satem-border: #E2E8F0;           /* Soft Border Slate */
-	--satem-border-focus: #93C5FD;     /* Focus Ring Outline */
+	/* Backgrounds & Surfaces (Sleek Dark Theme) */
+	--satem-bg-main: #061D24;          /* Main Deep Dark Teal Background */
+	--satem-surface: #0B2731;          /* Card & Container Surface */
+	--satem-surface-subtle: #113441;   /* Subtle Surface Highlight */
+	--satem-surface-dark: #1C1917;     /* Alternate Charcoal Surface */
+	--satem-border: #184352;           /* Soft Border Teal */
+	--satem-border-focus: #00D2B4;     /* Focus Ring Outline */
 
 	/* Typography & Colors */
-	--satem-text: #334155;             /* Readable Body Text */
-	--satem-text-heading: #0F172A;     /* Crisp Dark Heading */
-	--satem-text-muted: #64748B;       /* Muted Text / Captions */
-	--satem-text-light: #F8FAFC;       /* Dark Background Light Text */
+	--satem-text: #CBD5E1;             /* Readable Light Slate Text */
+	--satem-text-heading: #FFFFFF;     /* Crisp White Heading */
+	--satem-text-muted: #94A3B8;       /* Muted Light Text */
+	--satem-text-light: #F8FAFC;       /* White Text */
+	--satem-btn-text: #02181F;         /* High-Contrast Dark Text for Cyan Buttons */
 
 	/* Status Indicators & Badges */
-	--satem-success: #16A34A;          /* Green Success / In Stock */
-	--satem-success-bg: #DCFCE7;       /* Light Green Badge BG */
-	--satem-warning: #D97706;          /* Pending / Notice Warning */
-	--satem-warning-bg: #FEF3C7;       /* Light Warning Badge BG */
-	--satem-danger: #DC2626;           /* Out of Stock / Danger */
-	--satem-badge-b2b-bg: #EFF6FF;     /* B2B Wholesale Badge BG */
-	--satem-badge-b2b-text: #1D4ED8;   /* B2B Wholesale Badge Text */
+	--satem-success: #00D2B4;          /* Cyan Success / In Stock */
+	--satem-success-bg: rgba(0, 210, 180, 0.12);
+	--satem-warning: #F59E0B;          /* Pending Warning */
+	--satem-warning-bg: rgba(245, 158, 11, 0.12);
+	--satem-danger: #EF4444;           /* Danger */
+	--satem-badge-b2b-bg: rgba(0, 210, 180, 0.15); /* B2B Wholesale Badge BG */
+	--satem-badge-b2b-text: #00D2B4;   /* B2B Wholesale Badge Text */
 
 	/* Layout Dimensions & Radius */
 	--satem-container-max: 1280px;
@@ -51,9 +54,9 @@ Text Domain: satem-child
 	--satem-radius-pill: 9999px;
 
 	/* Elevation Shadows */
-	--satem-shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.05);
-	--satem-shadow-md: 0 4px 12px rgba(15, 23, 42, 0.08);
-	--satem-shadow-lg: 0 12px 28px rgba(15, 23, 42, 0.12);
+	--satem-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.25);
+	--satem-shadow-md: 0 6px 18px rgba(0, 0, 0, 0.35);
+	--satem-shadow-lg: 0 14px 32px rgba(0, 0, 0, 0.45);
 
 	/* Typography Font Stacks */
 	--satem-font-base: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
@@ -61,7 +64,7 @@ Text Domain: satem-child
 }
 
 /* ==========================================================================
-   2. GLOBAL LAYOUT, RESET & ACCESSIBILITY
+   2. GLOBAL LAYOUT, RESET & ACCESSIBILITY (DARK TECH THEME)
    ========================================================================== */
 *, *::before, *::after {
 	box-sizing: border-box;
@@ -92,8 +95,8 @@ a {
 }
 
 a:hover, a:focus {
-	color: var(--satem-accent-hover);
-	text-decoration: underline;
+	color: var(--satem-text-heading);
+	text-decoration: none;
 }
 
 :focus-visible {
@@ -106,11 +109,11 @@ a:hover, a:focus {
 	top: -100px;
 	left: 16px;
 	background: var(--satem-accent);
-	color: #ffffff;
+	color: var(--satem-btn-text);
 	padding: 8px 16px;
 	z-index: 9999;
 	border-radius: var(--satem-radius-sm);
-	font-weight: 600;
+	font-weight: 700;
 }
 
 .skip-link:focus {
@@ -127,7 +130,7 @@ a:hover, a:focus {
    3. HEADER & NAVIGATION (DESKTOP & MOBILE RESPONSIVE)
    ========================================================================== */
 .satem-site-header {
-	background: var(--satem-surface);
+	background: var(--satem-primary-dark);
 	border-bottom: 1px solid var(--satem-border);
 	position: sticky;
 	top: 0;
@@ -143,7 +146,7 @@ a:hover, a:focus {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	padding: 16px 0;
+	padding: 18px 0;
 	gap: 24px;
 }
 
@@ -156,18 +159,18 @@ a:hover, a:focus {
 
 .satem-logo-text {
 	font-family: var(--satem-font-heading);
-	font-size: 1.5rem;
+	font-size: 1.6rem;
 	font-weight: 800;
-	color: var(--satem-text-heading);
+	color: #ffffff;
 	letter-spacing: -0.5px;
 }
 
 .satem-logo-badge {
 	background: var(--satem-accent);
-	color: #ffffff;
+	color: var(--satem-btn-text);
 	font-size: 0.65rem;
 	font-weight: 800;
-	padding: 2px 6px;
+	padding: 3px 8px;
 	border-radius: 4px;
 	text-transform: uppercase;
 	letter-spacing: 0.5px;
@@ -183,7 +186,7 @@ a:hover, a:focus {
 }
 
 .satem-nav-main a {
-	color: var(--satem-text-heading);
+	color: var(--satem-text);
 	font-weight: 600;
 	font-size: 0.95rem;
 }
@@ -203,7 +206,7 @@ a:hover, a:focus {
 	display: inline-flex;
 	align-items: center;
 	gap: 6px;
-	padding: 6px 12px;
+	padding: 6px 14px;
 	border-radius: var(--satem-radius-pill);
 	font-size: 0.8rem;
 	font-weight: 700;
@@ -214,20 +217,20 @@ a:hover, a:focus {
 .satem-b2b-header-tag.approved {
 	background: var(--satem-badge-b2b-bg);
 	color: var(--satem-badge-b2b-text);
-	border: 1px solid #BFDBFE;
+	border: 1px solid rgba(0, 210, 180, 0.4);
 }
 
 .satem-b2b-header-tag.pending {
 	background: var(--satem-warning-bg);
 	color: var(--satem-warning);
-	border: 1px solid #FDE68A;
+	border: 1px solid rgba(245, 158, 11, 0.4);
 }
 
 .satem-cart-link {
 	display: inline-flex;
 	align-items: center;
 	gap: 8px;
-	background: var(--satem-surface-subtle);
+	background: var(--satem-surface);
 	padding: 8px 16px;
 	border-radius: var(--satem-radius-pill);
 	border: 1px solid var(--satem-border);
@@ -238,13 +241,14 @@ a:hover, a:focus {
 }
 
 .satem-cart-link:hover {
-	background: var(--satem-border);
+	background: var(--satem-surface-subtle);
+	border-color: var(--satem-accent);
 	text-decoration: none;
 }
 
 .satem-cart-count {
 	background: var(--satem-accent);
-	color: #ffffff;
+	color: var(--satem-btn-text);
 	border-radius: 50%;
 	min-width: 20px;
 	height: 20px;
@@ -252,7 +256,7 @@ a:hover, a:focus {
 	align-items: center;
 	justify-content: center;
 	font-size: 0.75rem;
-	font-weight: 700;
+	font-weight: 800;
 }
 
 .satem-nav-toggle {
@@ -269,55 +273,58 @@ a:hover, a:focus {
    4. HERO & HOME COMMERCIAL SECTIONS
    ========================================================================== */
 .satem-hero {
-	background: var(--satem-primary-dark);
+	background: var(--satem-hero-gradient);
 	color: #ffffff;
-	padding: 80px 0;
+	padding: 96px 0 80px;
 	position: relative;
 	overflow: hidden;
+	border-bottom: 1px solid var(--satem-border);
 }
 
 .satem-hero::before {
 	content: '';
 	position: absolute;
-	top: -50%;
-	right: -20%;
-	width: 600px;
-	height: 600px;
-	background: radial-gradient(circle, rgba(37, 99, 235, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
+	top: -40%;
+	right: -10%;
+	width: 700px;
+	height: 700px;
+	background: radial-gradient(circle, rgba(0, 210, 180, 0.18) 0%, rgba(0, 0, 0, 0) 70%);
 	pointer-events: none;
 }
 
 .satem-hero-content {
-	max-width: 720px;
+	max-width: 760px;
 	position: relative;
 	z-index: 2;
 }
 
 .satem-hero-tag {
 	display: inline-block;
-	background: rgba(37, 99, 235, 0.2);
-	color: #60A5FA;
-	border: 1px solid rgba(96, 165, 250, 0.3);
-	padding: 4px 12px;
+	background: rgba(0, 210, 180, 0.12);
+	color: var(--satem-accent);
+	border: 1px solid rgba(0, 210, 180, 0.3);
+	padding: 5px 14px;
 	border-radius: var(--satem-radius-pill);
 	font-size: 0.85rem;
 	font-weight: 700;
-	margin-bottom: 16px;
+	margin-bottom: 20px;
 	letter-spacing: 0.5px;
 }
 
 .satem-hero-title {
-	font-size: 3rem;
+	font-size: 3.2rem;
 	font-weight: 800;
 	color: #ffffff;
-	margin-bottom: 16px;
+	margin-bottom: 18px;
 	letter-spacing: -1px;
+	line-height: 1.15;
 }
 
 .satem-hero-subtitle {
-	font-size: 1.2rem;
-	color: #94A3B8;
-	margin-bottom: 32px;
+	font-size: 1.25rem;
+	color: var(--satem-text-muted);
+	margin-bottom: 36px;
+	line-height: 1.6;
 }
 
 .satem-hero-actions {
@@ -330,8 +337,8 @@ a:hover, a:focus {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	padding: 12px 24px;
-	border-radius: var(--satem-radius-md);
+	padding: 13px 28px;
+	border-radius: var(--satem-radius-pill);
 	font-weight: 700;
 	font-size: 1rem;
 	transition: all 0.2s ease;
@@ -341,31 +348,33 @@ a:hover, a:focus {
 
 .satem-btn-primary {
 	background: var(--satem-accent);
-	color: #ffffff !important;
+	color: var(--satem-btn-text) !important;
+	box-shadow: 0 4px 14px rgba(0, 210, 180, 0.3);
 }
 
 .satem-btn-primary:hover {
 	background: var(--satem-accent-hover);
+	color: var(--satem-btn-text) !important;
 	text-decoration: none;
 	transform: translateY(-2px);
-	box-shadow: var(--satem-shadow-md);
+	box-shadow: 0 6px 20px rgba(0, 210, 180, 0.4);
 }
 
 .satem-btn-outline {
 	background: transparent;
 	color: #ffffff !important;
-	border: 1px solid rgba(255, 255, 255, 0.3);
+	border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
 .satem-btn-outline:hover {
-	background: rgba(255, 255, 255, 0.1);
+	background: rgba(255, 255, 255, 0.08);
 	border-color: #ffffff;
 	text-decoration: none;
 }
 
 /* Category Cards Section */
 .satem-section {
-	padding: 64px 0;
+	padding: 72px 0;
 }
 
 .satem-section-header {
@@ -376,15 +385,17 @@ a:hover, a:focus {
 }
 
 .satem-section-title {
-	font-size: 2rem;
+	font-size: 2.2rem;
 	font-weight: 800;
 	margin: 0;
+	color: var(--satem-text-heading);
 }
 
 .satem-section-desc {
 	color: var(--satem-text-muted);
 	margin-top: 6px;
 	margin-bottom: 0;
+	font-size: 1.05rem;
 }
 
 .satem-categories-grid {
@@ -397,7 +408,7 @@ a:hover, a:focus {
 	background: var(--satem-surface);
 	border: 1px solid var(--satem-border);
 	border-radius: var(--satem-radius-lg);
-	padding: 32px 24px;
+	padding: 36px 24px;
 	text-align: center;
 	transition: all 0.3s ease;
 	box-shadow: var(--satem-shadow-sm);
@@ -406,54 +417,59 @@ a:hover, a:focus {
 }
 
 .satem-category-card:hover {
-	transform: translateY(-4px);
+	transform: translateY(-5px);
 	box-shadow: var(--satem-shadow-lg);
 	border-color: var(--satem-accent);
 	text-decoration: none;
 }
 
 .satem-category-icon {
-	width: 56px;
-	height: 56px;
-	background: var(--satem-surface-subtle);
+	width: 60px;
+	height: 60px;
+	background: rgba(0, 210, 180, 0.1);
 	border-radius: 50%;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	font-size: 1.5rem;
-	margin-bottom: 16px;
+	font-size: 1.6rem;
+	margin-bottom: 18px;
 	color: var(--satem-accent);
+	border: 1px solid rgba(0, 210, 180, 0.2);
 }
 
 .satem-category-name {
-	font-size: 1.2rem;
+	font-size: 1.25rem;
 	font-weight: 700;
 	margin-bottom: 8px;
+	color: #ffffff;
 }
 
 /* Wholesale Callout Banner */
 .satem-wholesale-banner {
-	background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+	background: linear-gradient(135deg, #02181F 0%, #0B2731 100%);
+	border: 1px solid var(--satem-border);
 	border-radius: var(--satem-radius-lg);
-	padding: 48px;
+	padding: 56px;
 	color: #ffffff;
 	margin: 48px 0;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	gap: 32px;
+	box-shadow: var(--satem-shadow-lg);
 }
 
 .satem-wholesale-banner h3 {
 	color: #ffffff;
-	font-size: 1.8rem;
+	font-size: 2rem;
 	margin-bottom: 12px;
 }
 
 .satem-wholesale-banner p {
-	color: #94A3B8;
+	color: var(--satem-text-muted);
 	margin: 0;
-	max-width: 600px;
+	max-width: 620px;
+	font-size: 1.05rem;
 }
 
 /* ==========================================================================
@@ -472,7 +488,7 @@ a:hover, a:focus {
 	background: var(--satem-surface);
 	border: 1px solid var(--satem-border);
 	border-radius: var(--satem-radius-lg);
-	padding: 20px;
+	padding: 22px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -484,9 +500,9 @@ a:hover, a:focus {
 }
 
 .woocommerce ul.products li.product:hover {
-	transform: translateY(-4px);
+	transform: translateY(-5px);
 	box-shadow: var(--satem-shadow-lg);
-	border-color: #CBD5E1;
+	border-color: var(--satem-accent);
 }
 
 .woocommerce ul.products li.product img {
@@ -495,22 +511,22 @@ a:hover, a:focus {
 	object-fit: contain;
 	border-radius: var(--satem-radius-md);
 	margin-bottom: 16px;
-	background: var(--satem-surface-subtle);
-	padding: 12px;
+	background: #041820;
+	padding: 14px;
 }
 
 .woocommerce ul.products li.product .woocommerce-loop-product__title {
-	font-size: 1.05rem;
+	font-size: 1.1rem;
 	font-weight: 700;
-	color: var(--satem-text-heading);
+	color: #ffffff;
 	margin: 8px 0;
 	line-height: 1.4;
 }
 
 .woocommerce ul.products li.product .price {
-	font-size: 1.2rem;
+	font-size: 1.25rem;
 	font-weight: 800;
-	color: var(--satem-text-heading);
+	color: #ffffff;
 	margin-bottom: 16px;
 }
 
@@ -526,11 +542,11 @@ a:hover, a:focus {
 	color: var(--satem-badge-b2b-text);
 	font-size: 0.75rem;
 	font-weight: 800;
-	padding: 3px 8px;
+	padding: 4px 10px;
 	border-radius: var(--satem-radius-sm);
 	text-transform: uppercase;
-	margin-bottom: 8px;
-	border: 1px solid #DBEAFE;
+	margin-bottom: 10px;
+	border: 1px solid rgba(0, 210, 180, 0.3);
 }
 
 .satem-case-pack-badge {
@@ -539,7 +555,7 @@ a:hover, a:focus {
 	color: var(--satem-text-muted);
 	font-size: 0.75rem;
 	font-weight: 600;
-	padding: 3px 8px;
+	padding: 4px 10px;
 	border-radius: var(--satem-radius-sm);
 	margin-bottom: 12px;
 	border: 1px solid var(--satem-border);
@@ -550,10 +566,10 @@ a:hover, a:focus {
 .woocommerce input.button.alt,
 .woocommerce a.button.alt {
 	background-color: var(--satem-accent) !important;
-	color: #ffffff !important;
-	border-radius: var(--satem-radius-md) !important;
+	color: var(--satem-btn-text) !important;
+	border-radius: var(--satem-radius-pill) !important;
 	font-weight: 700 !important;
-	padding: 10px 20px !important;
+	padding: 12px 22px !important;
 	border: none !important;
 	cursor: pointer;
 	text-align: center;
@@ -567,7 +583,7 @@ a:hover, a:focus {
 .woocommerce input.button.alt:hover,
 .woocommerce a.button.alt:hover {
 	background-color: var(--satem-accent-hover) !important;
-	box-shadow: var(--satem-shadow-md);
+	box-shadow: 0 4px 14px rgba(0, 210, 180, 0.35);
 }
 
 /* ==========================================================================
@@ -578,20 +594,21 @@ a:hover, a:focus {
 	border: 1px solid var(--satem-border);
 	border-radius: var(--satem-radius-lg);
 	padding: 40px;
-	box-shadow: var(--satem-shadow-sm);
+	box-shadow: var(--satem-shadow-md);
 	margin-top: 32px;
 	margin-bottom: 48px;
 }
 
 .woocommerce div.product .product_title {
-	font-size: 2.2rem;
+	font-size: 2.4rem;
 	font-weight: 800;
+	color: #ffffff;
 	margin-bottom: 16px;
 }
 
 .woocommerce div.product p.price,
 .woocommerce div.product span.price {
-	font-size: 1.8rem;
+	font-size: 2rem;
 	font-weight: 800;
 	color: var(--satem-accent);
 	margin-bottom: 24px;
@@ -601,20 +618,20 @@ a:hover, a:focus {
 	background: var(--satem-surface-subtle);
 	border: 1px solid var(--satem-border);
 	border-left: 4px solid var(--satem-accent);
-	padding: 16px 20px;
+	padding: 18px 22px;
 	border-radius: var(--satem-radius-sm);
-	margin: 20px 0 28px;
+	margin: 24px 0 28px;
 }
 
 .satem-packaging-info-box h5 {
 	margin: 0 0 6px 0;
-	font-size: 0.95rem;
-	color: var(--satem-text-heading);
+	font-size: 1rem;
+	color: #ffffff;
 }
 
 .satem-packaging-info-box p {
 	margin: 0;
-	font-size: 0.9rem;
+	font-size: 0.95rem;
 	color: var(--satem-text-muted);
 }
 
@@ -625,25 +642,28 @@ a:hover, a:focus {
 	border-radius: var(--satem-radius-md);
 	overflow: hidden;
 	margin-right: 16px;
+	background: #041820;
 }
 
 .satem-qty-btn {
 	background: var(--satem-surface-subtle);
 	border: none;
-	width: 40px;
-	height: 44px;
-	font-size: 1.2rem;
+	width: 44px;
+	height: 48px;
+	font-size: 1.3rem;
 	font-weight: 700;
-	color: var(--satem-text-heading);
+	color: var(--satem-accent);
 	cursor: pointer;
 }
 
 .woocommerce .quantity input.qty {
-	width: 60px !important;
-	height: 44px;
+	width: 64px !important;
+	height: 48px;
 	border: none !important;
+	background: transparent;
+	color: #ffffff;
 	text-align: center;
-	font-size: 1.05rem;
+	font-size: 1.1rem;
 	font-weight: 700;
 }
 
@@ -654,7 +674,7 @@ a:hover, a:focus {
 	background: var(--satem-surface);
 	border: 1px solid var(--satem-border);
 	border-radius: var(--satem-radius-lg);
-	padding: 24px;
+	padding: 28px;
 	margin-top: 24px;
 	margin-bottom: 32px;
 	display: flex;
@@ -668,55 +688,22 @@ a:hover, a:focus {
 	display: flex;
 	gap: 10px;
 	flex-grow: 1;
-	max-width: 450px;
+	max-width: 480px;
 }
 
 .satem-shop-search-form input[type="search"] {
 	width: 100%;
-	padding: 10px 16px;
+	padding: 12px 18px;
+	background: #041820;
 	border: 1px solid var(--satem-border);
-	border-radius: var(--satem-radius-md);
+	border-radius: var(--satem-radius-pill);
+	color: #ffffff;
 	font-size: 0.95rem;
 }
 
-.satem-shop-layout {
-	display: grid;
-	grid-template-columns: 260px 1fr;
-	gap: 32px;
-}
-
-.satem-shop-sidebar {
-	background: var(--satem-surface);
-	border: 1px solid var(--satem-border);
-	border-radius: var(--satem-radius-lg);
-	padding: 24px;
-	height: fit-content;
-}
-
-.satem-filter-widget h4 {
-	font-size: 1.1rem;
-	margin-bottom: 16px;
-	padding-bottom: 8px;
-	border-bottom: 1px solid var(--satem-border);
-}
-
-.satem-filter-widget ul {
-	list-style: none;
-	padding: 0;
-	margin: 0;
-}
-
-.satem-filter-widget ul li {
-	margin-bottom: 10px;
-}
-
-.satem-filter-widget ul li a {
-	color: var(--satem-text);
-	font-size: 0.95rem;
-}
-
-.satem-filter-widget ul li a:hover {
-	color: var(--satem-accent);
+.satem-shop-search-form input[type="search"]:focus {
+	border-color: var(--satem-accent);
+	outline: none;
 }
 
 /* ==========================================================================
@@ -729,10 +716,24 @@ a:hover, a:focus {
 	background: var(--satem-surface);
 	border: 1px solid var(--satem-border);
 	border-radius: var(--satem-radius-lg);
-	padding: 32px;
-	box-shadow: var(--satem-shadow-sm);
+	padding: 36px;
+	box-shadow: var(--satem-shadow-md);
 	margin-top: 32px;
 	margin-bottom: 48px;
+	color: var(--satem-text);
+}
+
+.woocommerce-cart-form table.shop_table,
+.woocommerce-checkout table.shop_table {
+	background: transparent;
+	color: var(--satem-text);
+	border-color: var(--satem-border);
+}
+
+.woocommerce-cart-form table.shop_table th,
+.woocommerce-checkout table.shop_table th {
+	color: #ffffff;
+	border-bottom: 1px solid var(--satem-border);
 }
 
 /* B2B Status Display Box in My Account */
@@ -740,49 +741,53 @@ a:hover, a:focus {
 	background: var(--satem-surface-subtle) !important;
 	border: 1px solid var(--satem-border) !important;
 	border-left: 4px solid var(--satem-accent) !important;
-	padding: 20px !important;
+	padding: 24px !important;
 	border-radius: var(--satem-radius-md) !important;
-	margin-bottom: 28px !important;
+	margin-bottom: 32px !important;
 }
 
 /* B2B Registration Form */
 .satem-b2b-registration-wrapper {
-	max-width: 680px;
+	max-width: 720px;
 	margin: 40px auto;
 	background: var(--satem-surface);
 	border: 1px solid var(--satem-border);
 	border-radius: var(--satem-radius-lg);
-	padding: 40px;
-	box-shadow: var(--satem-shadow-md);
+	padding: 44px;
+	box-shadow: var(--satem-shadow-lg);
 }
 
 .satem-b2b-registration-wrapper h3 {
-	font-size: 1.8rem;
-	margin-bottom: 8px;
+	font-size: 2rem;
+	color: #ffffff;
+	margin-bottom: 10px;
 }
 
 .satem-b2b-registration-wrapper p {
 	color: var(--satem-text-muted);
-	margin-bottom: 24px;
+	margin-bottom: 28px;
 }
 
 .satem-b2b-form .form-row {
-	margin-bottom: 18px;
+	margin-bottom: 20px;
 }
 
 .satem-b2b-form label {
 	display: block;
 	font-weight: 600;
-	margin-bottom: 6px;
-	font-size: 0.9rem;
+	margin-bottom: 8px;
+	font-size: 0.95rem;
+	color: #ffffff;
 }
 
 .satem-b2b-form input.input-text,
 .satem-b2b-form select.select {
 	width: 100%;
-	padding: 10px 14px;
+	padding: 12px 16px;
+	background: #041820;
 	border: 1px solid var(--satem-border);
 	border-radius: var(--satem-radius-md);
+	color: #ffffff;
 	font-size: 0.95rem;
 }
 
@@ -797,36 +802,36 @@ a:hover, a:focus {
    ========================================================================== */
 .satem-site-footer {
 	background: var(--satem-primary-dark);
-	color: #94A3B8;
-	padding: 64px 0 32px;
+	color: var(--satem-text-muted);
+	padding: 72px 0 36px;
 	margin-top: 80px;
-	border-top: 1px solid #1E293B;
+	border-top: 1px solid var(--satem-border);
 }
 
 .satem-footer-grid {
 	display: grid;
 	grid-template-columns: 2fr 1fr 1fr 1fr;
-	gap: 40px;
-	margin-bottom: 48px;
+	gap: 48px;
+	margin-bottom: 56px;
 }
 
 .satem-footer-brand h3 {
 	color: #ffffff;
-	font-size: 1.5rem;
+	font-size: 1.6rem;
 	margin-bottom: 12px;
 }
 
 .satem-footer-brand p {
-	color: #94A3B8;
+	color: var(--satem-text-muted);
 	font-size: 0.95rem;
 	line-height: 1.6;
-	max-width: 320px;
+	max-width: 340px;
 }
 
 .satem-footer-col h4 {
 	color: #ffffff;
-	font-size: 1.05rem;
-	margin-bottom: 20px;
+	font-size: 1.1rem;
+	margin-bottom: 22px;
 }
 
 .satem-footer-col ul {
@@ -840,23 +845,23 @@ a:hover, a:focus {
 }
 
 .satem-footer-col ul li a {
-	color: #94A3B8;
-	font-size: 0.9rem;
+	color: var(--satem-text-muted);
+	font-size: 0.95rem;
 }
 
 .satem-footer-col ul li a:hover {
-	color: #ffffff;
+	color: var(--satem-accent);
 	text-decoration: none;
 }
 
 .satem-footer-bottom {
-	border-top: 1px solid #1E293B;
-	padding-top: 28px;
+	border-top: 1px solid var(--satem-border);
+	padding-top: 32px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	font-size: 0.85rem;
-	color: #64748B;
+	color: var(--satem-text-muted);
 }
 
 /* ==========================================================================
@@ -865,9 +870,6 @@ a:hover, a:focus {
 @media (max-width: 1024px) {
 	.woocommerce ul.products {
 		grid-template-columns: repeat(3, 1fr);
-	}
-	.satem-shop-layout {
-		grid-template-columns: 1fr;
 	}
 	.satem-footer-grid {
 		grid-template-columns: 1fr 1fr;
@@ -884,23 +886,23 @@ a:hover, a:focus {
 		top: 100%;
 		left: 0;
 		right: 0;
-		background: var(--satem-surface);
+		background: var(--satem-primary-dark);
 		border-bottom: 1px solid var(--satem-border);
 		flex-direction: column;
-		padding: 20px;
-		gap: 16px;
-		box-shadow: var(--satem-shadow-md);
+		padding: 24px;
+		gap: 18px;
+		box-shadow: var(--satem-shadow-lg);
 	}
 	.satem-nav-main.is-active {
 		display: flex;
 	}
 	.satem-hero-title {
-		font-size: 2.2rem;
+		font-size: 2.3rem;
 	}
 	.satem-wholesale-banner {
 		flex-direction: column;
 		align-items: flex-start;
-		padding: 32px;
+		padding: 36px;
 	}
 	.woocommerce ul.products {
 		grid-template-columns: repeat(2, 1fr);
@@ -911,7 +913,7 @@ a:hover, a:focus {
 	}
 	.satem-footer-bottom {
 		flex-direction: column;
-		gap: 12px;
+		gap: 14px;
 		text-align: center;
 	}
 }
@@ -921,15 +923,15 @@ a:hover, a:focus {
 		padding: 0 16px;
 	}
 	.satem-hero-title {
-		font-size: 1.8rem;
+		font-size: 1.9rem;
 	}
 	.woocommerce ul.products {
 		grid-template-columns: 1fr;
 	}
 	.woocommerce div.product {
-		padding: 20px;
+		padding: 24px;
 	}
 	.satem-b2b-registration-wrapper {
-		padding: 24px;
+		padding: 28px;
 	}
 }
