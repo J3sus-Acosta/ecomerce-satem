@@ -1,0 +1,8 @@
+.git
+.gitignore
+docs/
+*.md
+catalog-template.csv
+scripts/
+config/
+C:\Users\Usuario\.gemini\antigravity-ide\brain\*
